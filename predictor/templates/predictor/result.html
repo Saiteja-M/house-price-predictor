@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result | House Price Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            text-align: center;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        header h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            width: 500px;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            text-align: center;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .card h2 {
+            color: #2c5364;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1b4332;
+            margin-bottom: 25px;
+        }
+
+        .details {
+            text-align: left;
+            margin-top: 20px;
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .details ul {
+            list-style: none;
+        }
+
+        .details li {
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            background: #2c5364;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #203a43;
+        }
+
+        .error {
+            color: red;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            color: white;
+            background: rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media(max-width: 600px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>House Price Prediction System</h1>
+    <p>Machine Learning Based Real Estate Valuation</p>
+</header>
+
+<div class="container">
+    <div class="card">
+
+        <h2>🏡 Prediction Result</h2>
+
+        {% if predicted_price %}
+            <div class="price">
+                ₹ {{ predicted_price }} Lakhs
+            </div>
+        {% endif %}
+
+        {% if saved %}
+            <div class="details">
+                <h3>Saved Record Details</h3>
+                <ul>
+                    <li><strong>Record ID:</strong> {{ house.id }}</li>
+                    <li><strong>Timestamp:</strong> {{ house.created_at }}</li>
+                    <li><strong>User Name:</strong> {{ house.user_name }}</li>
+                    <li><strong>Location:</strong> {{ house.location }}</li>
+                    <li><strong>Area (sqft):</strong> {{ house.area_sqft }}</li>
+                    <li><strong>Bedrooms:</strong> {{ house.bedrooms }}</li>
+                    <li><strong>Bathrooms:</strong> {{ house.bathrooms }}</li>
+                    <li><strong>Year Built:</strong> {{ house.year_built }}</li>
+                    <li><strong>Predicted Price (DB):</strong> ₹ {{ house.predicted_price }}</li>
+                </ul>
+            </div>
+        {% else %}
+            <p class="error">Something went wrong. Please try again.</p>
+        {% endif %}
+
+        <a href="{% url 'home' %}" class="btn">Predict Again</a>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 House Price Prediction | Developed using Django & Machine Learning By Sai teja
+</footer>
+
+</body>
+</html>

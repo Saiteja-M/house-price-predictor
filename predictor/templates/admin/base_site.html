@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{# Inject custom CSS + JS into the admin head #}
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'admin_custom/css/admin_custom.css' %}">
+  <script src="{% static 'admin_custom/js/admin_custom.js' %}"></script>
+  <style>
+    /* Inline quick hook: set logo as background for .logo */
+    .branding .logo {
+      background-image: url("{% static 'admin_custom/img/logo.png' %}");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  </style>
+{% endblock %}
+
+{# Optionally change the header text area slightly by overriding block 'branding' #}
+{% block branding %}
+  <div class="branding">
+    <a href="{% url 'admin:index' %}">
+      <span class="logo" aria-hidden="true"></span>
+    </a>
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">HousePrice Admin</a></h1>
+  </div>
+{% endblock %}

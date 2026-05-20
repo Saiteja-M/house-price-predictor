@@ -1,0 +1,57 @@
+/* admin_custom.css
+   Simple, safe tweaks: top bar color, logo placement, table highlight
+*/
+
+/* top header background + site title color */
+#header {
+  background: linear-gradient(90deg, #0f4c81 0%, #0b6ea8 100%) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* header title (white and bolder) */
+#header h1 a {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px;
+}
+
+/* move the branding left and show logo if present */
+#header .branding {
+  display: flex;
+  align-items: center;
+}
+#header .branding .logo {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* change admin index boxes background */
+.dashboard-module .module caption, .module caption {
+  background: #f7fafc !important;
+}
+
+/* make predicted price column bold-green on change list (example) */
+.change-list .column-predicted_price {
+  font-weight: 700;
+  color: #126e13;
+}
+
+/* make admin table rows slightly spaced and clearer */
+.change-list table tbody tr td {
+  padding: 10px 8px;
+}
+
+/* style the login box slightly */
+.login-box {
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+}
+
+/* footer small tweak */
+#footer {
+  color: #6b7280;
+}

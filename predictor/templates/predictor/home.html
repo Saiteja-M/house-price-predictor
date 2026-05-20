@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction | ML Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            text-align: center;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            width: 450px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #2c5364;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #2c5364;
+            outline: none;
+            box-shadow: 0 0 5px rgba(44,83,100,0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #2c5364;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #203a43;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            color: white;
+            background: rgba(0,0,0,0.3);
+        }
+
+        @media(max-width: 500px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>House Price Prediction System</h1>
+    <p>Machine Learning Based Real Estate Valuation | Academic Project</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h2>Enter Property Details</h2>
+
+        <form method="POST" action="{% url 'predict_price' %}">
+            {% csrf_token %}
+
+            <label>Area Type</label>
+            <input type="text" name="area_type" required>
+
+            <label>Availability</label>
+            <input type="text" name="availability" required>
+
+            <label>Location</label>
+            <input type="text" name="location" required>
+
+            <label>Size</label>
+            <input type="text" name="size" required>
+
+            <label>Society</label>
+            <input type="text" name="society">
+
+            <label>Total Sqft</label>
+            <input type="number" step="any" name="total_sqft" required>
+
+            <label>Bath</label>
+            <input type="number" step="any" name="bath" required>
+
+            <label>Balcony</label>
+            <input type="number" step="any" name="balcony">
+
+            <button type="submit">Predict Price</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    © 2026 House Price Prediction | Developed using Django & Machine Learning
+</footer>
+
+</body>
+</html>
